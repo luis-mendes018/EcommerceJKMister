@@ -1,0 +1,72 @@
+﻿@model FileManagerModel
+
+@{
+    ViewBag.Title = "Arquivos";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        h3 {
+            margin-top: 30px;
+        }
+
+        a {
+            color: white;
+        }
+
+       button[onclick] {
+              background-color: cornflowerblue;
+              color: white;
+              border: none;
+              padding: 10px;
+              border-radius: 5px;
+              font-size: 14px;
+              height: 50px; 
+              margin-top:18px;
+       }
+
+       button[onclick]:hover {
+            box-shadow: 0px 0px 5px black;
+       }
+    </style>
+
+</head>
+
+  <body>
+      @if (Model.Files != null)
+      {
+        <h3>Imagens: </h3>
+        <hr />
+        var caminho = Model.PathImagesProduto;
+
+        <div class="row">
+            @foreach (FileInfo file in Model.Files)
+            {
+                <div class="col-2">
+                    <img src="~/@caminho/@file.Name" width="125" height="125" title="@file.Name" asp-append-version="true">
+                    <div style="padding:10px;text-align:left">
+                        <a href="@Url.Action("Deletefile","AdminImagens",new { fname=file.Name})">Deletar</a>
+
+                      <button onclick="copyToClipboard('@Model.PathImagesProduto/@file.Name')">Copiar caminho da imagem</button>
+
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+
+
+      }
+      <script src="~/js/site.js"></script>
+
+  </body>
+
+</html>
+
+

@@ -1,0 +1,17 @@
+﻿@model RoupaPreferidaViewModel
+
+<style>
+    h2{
+        margin-top: 40px;
+    }
+</style>
+<h2>Preferidas da semana</h2>
+
+<h4>Quer realmente ficar no estilo? Confira os produtos mais vendidos!</h4>
+
+<div class="row">
+    @foreach(var roupa in Model.RoupasPreferidas)
+    {
+        <partial name="_RoupasResumo" for="@roupa" />
+    }
+</div>

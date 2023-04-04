@@ -1,0 +1,85 @@
+﻿@model CarrinhoCompraViewModel
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+   <style>
+       .table{
+
+           background-color: white;
+       }
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <img style="height:10vh; width: 10vh" src="~/images/cartT.png" />
+
+            <div>
+                <h4>Seu carrinho de compras:</h4>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Quantidade</th>
+                        <th>Roupa</th>
+                        <th class="text-right">Preço</th>
+                        <th class="text-right">Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach(var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+                    {
+                        <tr>
+                            <td class="text-center">@item.Quantidade</td>
+                            <td class="text-left">@item.Roupa.Nome</td>
+                            <td class="text-right">@item.Roupa.Preco.ToString("c")</td>
+
+                            <td class="text-right">
+                                @((item.Quantidade * item.Roupa.Preco).ToString("c"))
+                            </td>
+
+                            
+                            
+                            <th class="text-center">
+                               <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinho" asp-route-roupaId="@item.Roupa.RoupaId">
+                                   <img src="~/images/trash.svg" />
+                               </a>
+                            </th>
+                            
+                            
+                        </tr>
+                    }
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Total:</td>
+                        <td class="text-right">
+                            @Model.CarrinhoCompraTotal.ToString("c")
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+            <div class="text-right">
+                <div class="btn-group">
+                    <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-primary" asp-controller="Roupa" asp-action="List">Continuar Comprando</a>
+                </div>
+            </div>
+
+            <br />
+        </div>
+    </div>
+</body>
+</html>

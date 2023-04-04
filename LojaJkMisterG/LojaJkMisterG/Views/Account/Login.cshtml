@@ -1,0 +1,114 @@
+﻿@model LoginViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h3 {
+            color: white;
+        }
+
+        form {
+            color: white;
+        }
+
+        img {
+            margin-top: 20px;
+        }
+
+        table.table {
+            border-collapse: collapse;
+        }
+
+            table.table, table.table td {
+                border: 0;
+            }
+
+        .mensagem{
+
+            margin-top:30px;
+        }
+
+    </style>
+</head>
+<body>
+
+   <div class="mensagem">
+        @if (TempData["Mensagem"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Mensagem"]
+            </div>
+        }
+   </div>
+
+    <table class="table">
+        <tr>
+            <td><img src="~/images/group.png" alt="Fazer o Login" class="center-block" /></td>
+            <td>
+                <div class="row">
+                    <div class="col-10 col-md-10 col-lg-10">
+
+                        <h3>Login</h3>
+                        <br />
+                        <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
+
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+                            <input type="hidden" asp-for="ReturnUrl" />
+                            <div class="form-group">
+                                <label asp-for="UserName" class="col-md-2 control-label"></label>
+                                <div class="col-md-6">
+                                    <input asp-for="UserName" class="form-control" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label asp-for="Password" class="col-md-2 control-label"></label>
+                                <div class="col-md-6">
+                                    <input asp-for="Password" class="form-control" id="Password" />
+                                    <input type="checkbox" style="margin-top:10px" onclick="MostrarSenha()" /> Mostrar senha
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <input type="submit" class="btn btn-success" value="Log in" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                        </form>
+
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @{
+                                        var errorMessage = "Credenciais incorretas!";
+                                        var error = ViewData.ModelState.Values
+                                        .SelectMany(v => v.Errors)
+                                        .FirstOrDefault(e => e.ErrorMessage == errorMessage);
+
+                                        if (error != null)
+                                        {
+                                            <li>@errorMessage</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>

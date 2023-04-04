@@ -1,0 +1,39 @@
+﻿@model LojaJkMisterG.Models.Categoria
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<style>
+    h1{
+        margin-top: 30px;
+    }
+    a{
+        color: white;
+    }
+</style>
+<h1>Informações da categoria</h1>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaNome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoriaNome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CategoriaId">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <!--Início do carrossel-->
+    <div class="row justify-content-center">
+        <div id="carouselStore" class="carousel slide mx-auto" data-bs-ride="carousel" data-bs-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselStore" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+                <li data-bs-target="#carouselStore" data-bs-slide-to="1" aria-label="Slide 2"></li>
+                <li data-bs-target="#carouselStore" data-bs-slide-to="2" aria-label="Slide 3"></li>
+                <li data-bs-target="#carouselStore" data-bs-slide-to="3" aria-label="Slide 4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/Roupa1.jpg" class="d-block w-100" alt="roupa1">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Compre suas roupas no melhor lugar!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/Roupa2.jpg" class="d-block w-100" alt="roupa2">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Tudo pelo melhor preço!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/Roupa3.jpg" class="d-block w-100" alt="roupa3">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Confira!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/Roupa4.jpg" class="d-block w-100" alt="roupa4">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Peças limitadas!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div>
+    <!--Fim do carrossel-->
+
+    <br />
+    <br />
+
+    <div class="inicioMobile">
+        <p>Seja muito bem-vindo a loja JkMisterG</p>
+
+        <p>Aqui temos as:</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <h4>  Melhores camisetas</h4>
+
+            <label><img src="~/images/Camisa.jpg" /></label>
+
+        </div>
+        <div class="col-md-3">
+
+            <h4>Melhores blusas</h4>
+
+            <label><img src="~/images/Blusa.jpg" /></label>
+
+        </div>
+        <div class="col-md-3">
+
+            <h4>Melhores calças</h4>
+
+            <label><img src="~/images/Calca.jpg" /></label>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <h4> Melhores bermudas</h4>
+
+            <label><img src="~/images/Bermuda.jpg" /></label>
+
+        </div>
+
+        <div class="finalApresentacaoMobile">
+            <p> E muito mais! Confira!</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Administrador</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LojaJkMisterG.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @*Área de administração*@
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                           
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Admin" asp-action="Index">Home</a>
+                                </li>
+                            
+
+                           
+                           
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoupas" asp-action="Index">Produtos</a>
+                                </li>
+                            
+
+                            
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminCategorias" asp-action="Index">Categorias</a>
+                                </li>
+                            
+
+                            
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminPedidos" asp-action="Index">Pedidos</a>
+                                </li>
+                            
+
+                           
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRelatorioVendas" asp-action="Index">Relatório de Vendas</a>
+                                </li>
+                            
+
+                           
+                                <!-- Graficos-->
+                                <li class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Gráficos de Vendas
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGrafico" asp-action="Index">Vendas Anual</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGrafico" asp-action="VendasMensal" asp-route-dias="30">Vendas Mensais</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="AdminGrafico" asp-action="VendasSemanal" asp-route-dias="7">Vendas Semanais</a>
+                                    </div>
+                                </li>
+                                <!--fim menu grafico-->
+                            
+                           
+
+
+
+                            <li class="nav-item" style="margin-left: 38%;">
+                                <div class="dropdown">
+
+                                    <a class="btn btn-light dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        @User.Identity.Name
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+
+                                        
+                                        
+                                            <li class="dropdown-item">
+                                            <a class="dropdown-item" style="color:black" asp-area="Admin" asp-controller="AdminFuncionarios" asp-action="Index">Funcionários</a>
+                                            </li>
+                                        
+                                        
+
+                                        <li class="dropdown-item">
+                                            <a class="dropdown-item" style="color:black" asp-area="Admin" asp-controller="AdminImagens" asp-action="Index">Gerenciar imagens</a>
+                                        </li>
+
+                                        <li class="dropdown-item">
+                                            <a class="dropdown-item" style="color:black" asp-area="Admin" asp-controller="Admin" asp-action="AdminAlterarSenhaView">
+                                                Alerar senha
+                                            </a>
+                                        </li>
+
+                                        <li class="dropdown-item">
+                                            @await Html.PartialAsync("_LoginPartial")
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+                            </li>
+
+                        }
+                        else
+                        {
+                            @*Alinhamento a direita/esquerda*@
+
+                            <sapn class="navbar-brand">JkMisterG</sapn>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="ContatoView">Contato</a>
+                            </li>
+
+
+                            <li class="nav-item" style="margin-right: 65%;">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Cadastre-se</a>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+
+            <span class="copy"> &copy; @DateTime.Now.Year - JkMisterG</span>
+
+            <nav>
+
+                <ul style="list-style:none;" class="redes-sociais">
+                    <li>
+                        <a style="text-decoration:none; color:white;" href="https://web.facebook.com/jkmisterg" target="_blank">
+                            <img src="/images/facebook-app-symbol.svg" />
+                            @* <p style="font-size:12px; margin-top: 20px;">@@JkMisterG</p>*@
+                        </a>
+                    </li>
+                    <li>
+                        <a style="text-decoration:none; color:white;" href="https://www.instagram.com/jkmistergoficial/" target="_blank">
+                            <img src="/images/instagram.svg" />
+                            @* <p style="font-size:12px; margin-top: 20px;">@@jkmistergoficial</p>*@
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

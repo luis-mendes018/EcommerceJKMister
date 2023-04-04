@@ -1,0 +1,291 @@
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+body {
+    background-color: #333333;
+    color: white;
+}
+
+
+
+.row {
+    margin-top: 40px;
+}
+
+/*Carousel início*/
+.carousel-item img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52vh;
+    width: 100%;
+}
+
+.carousel-caption p {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    text-shadow: 0px 1px 1px #333;
+}
+
+/*.carousel-indicators li {
+    border-radius: 50%;
+}*/
+
+.carousel-indicators .active {
+    background-color: black;
+}
+/*Carousel fim*/
+
+
+
+
+/*Classe row*/
+
+.col-md-3 h4 {
+    text-align: center;
+    font-size:22px;
+}
+
+.col-md-3 img {
+    display: flex;
+    justify-content: center;
+    border-radius:20px;
+}
+
+.col-md-3 img {
+    border: solid;
+    width: 28vh;
+    height: 40vh;
+    margin-left: 50px;
+}
+
+.col-md-3 label:hover {
+    transition: .2s;
+    transform: scale(1.2) translateY(-10px);
+}
+
+.inicioMobile{
+
+    display: none;
+}
+
+.finalApresentacaoMobile{
+
+    display: none;
+}
+
+
+/*Mobile*/
+
+@media (max-width: 320px){
+
+    body {
+        box-sizing:border-box;
+        background-color: #333333;
+        color: white;
+    }
+
+  #carouselStore{
+
+      display: none;
+  }
+
+
+    /*classe row*/
+    .col-md-3 h4 {
+        text-align: center;
+        font-size: 18px;
+        margin-right: 28px;
+    }
+
+    .col-md-3 img {
+        display: flex;
+        flex-direction:column;
+        justify-content: space-between;
+        align-items:center;
+        border-radius: 20px;
+       
+    }
+
+    .col-md-3 img {
+        border: solid;
+        width: 30vh;
+        height: 30vh;
+        margin-left: 50px;
+    }
+
+    .inicioMobile {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .finalApresentacaoMobile{
+
+        display: block;
+        font-size:18px;
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 375px) and (max-width: 424px) {
+
+    body {
+        box-sizing: border-box;
+        background-color: #333333;
+        color: white;
+    }
+
+    #carouselStore {
+        display: none;
+    }
+
+
+    /*classe row*/
+    .col-md-3 h4 {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .col-md-3 img {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+    .col-md-3 img {
+        border: solid;
+        width: 42vh;
+        height: 42vh;
+        margin-left: 50px;
+    }
+
+    .inicioMobile {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .finalApresentacaoMobile {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+
+}
+
+@media(min-width: 425px) and (max-width: 767px){
+
+    body {
+        box-sizing: border-box;
+        background-color: #333333;
+        color: white;
+    }
+
+    #carouselStore {
+        display: none;
+    }
+
+
+    /*classe row*/
+    .col-md-3 h4 {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .col-md-3 img {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+    .col-md-3 img {
+        border: solid;
+        width: 48vh;
+        height: 48vh;
+        margin-left: 50px;
+    }
+
+    .inicioMobile {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .finalApresentacaoMobile {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+    }
+
+}
+
+@media(min-width: 768px) and (max-width: 1023px) {
+
+    body {
+        box-sizing: border-box;
+        background-color: #333333;
+        color: white;
+    }
+
+    .carousel-item img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40vh;
+        width: 98%;
+    }
+
+    .carousel-caption p {
+        color: white;
+        font-size: 18px;
+        font-weight: 800;
+        text-shadow: 0px 1px 1px #333;
+    }
+
+
+    /*classe row*/
+    .col-md-3 h4 {
+        text-align: center;
+        font-size: 18px;
+        margin-left: 50px;
+    }
+
+    .col-md-3 img {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+
+    }
+
+    .col-md-3 img {
+        border: solid;
+        width: 25vh;
+        height: 25vh;
+        
+    }
+
+    .inicioMobile {
+        display: none;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .finalApresentacaoMobile {
+        display: none;
+        font-size: 18px;
+        text-align: center;
+    }
+}

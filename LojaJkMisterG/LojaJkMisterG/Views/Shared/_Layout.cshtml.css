@@ -1,0 +1,53 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar{
+
+    position: relative;
+    top: 20px;
+}
+
+footer{
+
+    position: relative;
+    top: 30px;
+}
+footer {
+    bottom: 0;
+    width: 100%;
+    line-height: 75px;
+    overflow: hidden;
+    
+}
+ footer .container .copy{
+    color:whitesmoke;
+ }
+
+footer nav .redes-sociais {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+        
+}
+
+    footer nav .redes-sociais li {
+        /*text-align: center;*/
+        margin: 15px 28px;
+        display: inline-block;
+        
+    }
+
+
+  footer nav .redes-sociais li a img {
+     width: 40px;
+     transition: .2s;
+  }
+
+
+   footer nav .redes-sociais li a:hover img {
+     transform: scale(1.2) translateY(-10px);
+   } 

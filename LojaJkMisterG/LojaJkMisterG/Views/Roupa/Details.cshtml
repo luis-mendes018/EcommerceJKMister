@@ -1,0 +1,52 @@
+﻿@model Roupa
+
+<style>
+    .container .img-fluid{
+
+        height: 320px;
+        width: 320px;
+        margin-top: 30px;
+    }
+    .container .card{
+        border: 5px solid black;
+        border-radius: 20px;
+    }
+
+    .container .card-title{
+
+        font-family: Arial;
+        font-size: 35px;
+        color:black;
+    }
+
+    .container .card-text{
+
+        font-family: Arial;
+        color: black;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="text-center">
+                <img src="@Model.ImagemUrl" class="img-fluid" alt="">
+            </div>
+
+            <div class="card-block">
+                <h2 class="card-title">@Model.Nome</h2>
+                <p class="card-text">@Model.DescricaoDetalhada</p>
+
+                <p class="btn btn-group align-content-lg-end"> 
+
+                    <a asp-controller="Roupa" asp-action="List" class="btn btn-outline-info">
+                        Ver todas as roupas
+                    </a>
+
+                    <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-roupaId="@Model.RoupaId">
+                        Adicionar @Model.Nome ao carrinho
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

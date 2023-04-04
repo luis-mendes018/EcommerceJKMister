@@ -1,0 +1,108 @@
+/* _content/LojaJkMisterG/Areas/Admin/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+*[b-2zc2ydwman] {
+    box-sizing: border-box;
+}
+
+.navbar[b-2zc2ydwman]{
+
+    position: relative;
+    top: 20px;
+}
+
+footer[b-2zc2ydwman]{
+
+    position: relative;
+    top: 30px;
+}
+footer[b-2zc2ydwman] {
+    bottom: 0;
+    width: 100%;
+    line-height: 75px;
+    overflow: hidden;
+    
+}
+ footer .container .copy[b-2zc2ydwman]{
+    color:whitesmoke;
+ }
+
+footer nav .redes-sociais[b-2zc2ydwman] {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+        
+}
+
+    footer nav .redes-sociais li[b-2zc2ydwman] {
+        /*text-align: center;*/
+        margin: 15px 28px;
+        display: inline-block;
+        
+    }
+
+
+  footer nav .redes-sociais li a img[b-2zc2ydwman] {
+     width: 40px;
+     transition: .2s;
+  }
+
+
+   footer nav .redes-sociais li a:hover img[b-2zc2ydwman] {
+     transform: scale(1.2) translateY(-10px);
+   } 
+/* _content/LojaJkMisterG/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+*[b-gjht82s7yx] {
+    box-sizing: border-box;
+}
+
+.navbar[b-gjht82s7yx]{
+
+    position: relative;
+    top: 20px;
+}
+
+footer[b-gjht82s7yx]{
+
+    position: relative;
+    top: 30px;
+}
+footer[b-gjht82s7yx] {
+    bottom: 0;
+    width: 100%;
+    line-height: 75px;
+    overflow: hidden;
+    
+}
+ footer .container .copy[b-gjht82s7yx]{
+    color:whitesmoke;
+ }
+
+footer nav .redes-sociais[b-gjht82s7yx] {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+        
+}
+
+    footer nav .redes-sociais li[b-gjht82s7yx] {
+        /*text-align: center;*/
+        margin: 15px 28px;
+        display: inline-block;
+        
+    }
+
+
+  footer nav .redes-sociais li a img[b-gjht82s7yx] {
+     width: 40px;
+     transition: .2s;
+  }
+
+
+   footer nav .redes-sociais li a:hover img[b-gjht82s7yx] {
+     transform: scale(1.2) translateY(-10px);
+   } 
