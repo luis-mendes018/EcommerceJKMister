@@ -3,13 +3,22 @@
 
 @{
 
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Funcionários";
 
 }
 
+<style>
+    h3 {
+        margin-top: 30px;
+    }
 
+    th, tr, a {
+        color: white;
+    }
 
-<h1>Index</h1>
+</style>
+
+<h3>Funcionários</h3>
 
 
 
@@ -37,7 +46,7 @@ Total de Funcionários: @Model.TotalRecordCount
 
 <p>
 
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar funcionário</a>
 
 </p>
 
@@ -54,7 +63,7 @@ Total de Funcionários: @Model.TotalRecordCount
 
             </th>
 
-            <th>
+            @*<th>
 
                 @Html.DisplayNameFor(model => model.Password)
 
@@ -64,14 +73,14 @@ Total de Funcionários: @Model.TotalRecordCount
 
                 @Html.DisplayNameFor(model => model.PasswordConfirm)
 
-            </th>
+            </th>*@
 
             <th>
-
+                
                 @Html.DisplayNameFor(model => model.IsVendedor)
 
             </th>
-
+            
             <th>
 
                 @Html.DisplayNameFor(model => model.IsGerente)
@@ -83,8 +92,6 @@ Total de Funcionários: @Model.TotalRecordCount
                 @Html.DisplayNameFor(model => model.IsAdmin)
 
             </th>
-
-            <th></th>
 
         </tr>
 
@@ -98,12 +105,12 @@ Total de Funcionários: @Model.TotalRecordCount
             <tr>
 
                 <td>
-
+                    <br/>
                     @Html.DisplayFor(modelItem => item.EmailRegister)
 
                 </td>
 
-                <td>
+                @*<td>
 
                     @Html.DisplayFor(modelItem => item.Password)
 
@@ -113,33 +120,33 @@ Total de Funcionários: @Model.TotalRecordCount
 
                     @Html.DisplayFor(modelItem => item.PasswordConfirm)
 
-                </td>
+                </td>*@
 
                 <td>
-
+                    <br>
                     @Html.DisplayFor(modelItem => item.IsVendedor)
 
                 </td>
 
                 <td>
-
+                    <br>
                     @Html.DisplayFor(modelItem => item.IsGerente)
 
                 </td>
 
                 <td>
-
+                    <br>
                     @Html.DisplayFor(modelItem => item.IsAdmin)
 
                 </td>
 
                 <td>
 
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
 
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
 
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
 
                 </td>
 

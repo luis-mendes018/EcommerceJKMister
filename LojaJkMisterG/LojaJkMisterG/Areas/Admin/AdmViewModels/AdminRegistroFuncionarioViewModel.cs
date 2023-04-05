@@ -34,14 +34,14 @@ namespace LojaJkMisterG.Areas.Admin.AdmViewModels
         [Display(Name = "Confirmar senha")]
         public string PasswordConfirm { get; set; }
 
-        [Display(Name = "Tornar esse usuário vendedor")]
+        [Display(Name = "Vendedor")]
         public bool IsVendedor { get; set; }
 
 
-        [Display(Name = "Tornar esse usuário gerente")]
+        [Display(Name = "Gerente")]
         public bool IsGerente { get; set; }
 
-        [Display(Name = "Tornar esse usuário administrador")]
+        [Display(Name = "Administrador")]
         public bool IsAdmin { get; set; }
 
     }

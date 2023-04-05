@@ -1,13 +1,27 @@
 ﻿@model LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroFuncionarioViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Details</h1>
+
+<style>
+    h3 {
+        margin-top: 30px;
+    }
+
+    th, tr, a {
+        color: white;
+    }
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<h3>Detalhes</h3>
 
 <div>
-    <h4>AdminRegistroFuncionarioViewModel</h4>
+  
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -50,5 +64,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>

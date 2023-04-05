@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 using ReflectionIT.Mvc.Paging;
 
 using X.PagedList;
@@ -31,68 +30,38 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
             _context = context;
         }
 
-       // GET: AdminFuncionariosController
+        // GET: AdminFuncionariosController
 
         public async Task<IActionResult> Index(string filter, int pageindex = 1, string sort = "Email")
         {
-
             var usersQuery = _context.Users.AsQueryable();
-
-
-
             if (!string.IsNullOrWhiteSpace(filter))
-
             {
-
                 usersQuery = usersQuery.Where(u => u.Email.Contains(filter));
-
             }
-
-
-
-            var pagedUsers = await usersQuery.ToPagedListAsync(pageindex, 5);
-
-
+            //var pagedUsers = await usersQuery.ToPagedListAsync(pageindex, 5);
 
             var viewModelList = new List<AdminRegistroFuncionarioViewModel>();
-
-            foreach (var user in pagedUsers)
+            foreach (var user in usersQuery)
             {
-
                 var viewModel = new AdminRegistroFuncionarioViewModel
-
                 {
-
                     Id = user.Id,
-
                     EmailRegister = user.Email,
-
                     Password = user.PasswordHash,
-
                     PasswordConfirm = user.PasswordHash,
-
                     IsAdmin = await _userManager.IsInRoleAsync(user, RolesTypes.Admin),
-
                     IsGerente = await _userManager.IsInRoleAsync(user, RolesTypes.Gerente),
-
                     IsVendedor = await _userManager.IsInRoleAsync(user, RolesTypes.Vendedor)
-
                 };
-
-                
-               
-
                 viewModelList.Add(viewModel);
-
-               
-
             }
-            var model = PagingList.Create(viewModelList.AsQueryable(), 5, pageindex);
+            var lista = viewModelList.AsQueryable();
+            var model = PagingList.Create(lista, 5, pageindex);
 
             model.RouteValue = new RouteValueDictionary { { "filter", filter } };
             model.Action = "Index";
             return View(model);
-
         }
 
 
