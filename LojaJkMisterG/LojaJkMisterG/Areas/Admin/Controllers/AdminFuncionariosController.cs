@@ -189,14 +189,13 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
 
                 var result = await _userManager.UpdateAsync(user);
 
+
                 if (result.Succeeded)
                 {
                     var roles = await _userManager.GetRolesAsync(user);
-                    await
 
 
-
-                     _userManager.RemoveFromRolesAsync(user, roles);
+                    await _userManager.RemoveFromRolesAsync(user, roles);
 
                     if (model.IsVendedor)
                     {

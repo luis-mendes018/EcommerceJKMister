@@ -4,29 +4,28 @@
     ViewData["Title"] = "Create";
 }
 
-<style>
-    h3 {
-        margin-top: 30px;
+<h1>Create</h1>
+
+<script>
+    function selectOnlyThis(id) {
+        var checkboxes = document.querySelectorAll('.form-check-input');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].id !== id) {
+                checkboxes[i].checked = false;
+            }
+        }
+        document.getElementById(id).checked = true;
     }
 
-    th, tr, a {
-        color: white;
-    }
+</script>
 
-    .form-group{
-
-        margin-top:20px;
-    }
-</style>
-
-<h3>Cadastrar funcionário</h3>
-
-
+<h4>AdminRegistroFuncionarioViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
                 <input asp-for="Id" class="form-control" />
@@ -37,56 +36,39 @@
                 <input asp-for="EmailRegister" class="form-control" />
                 <span asp-validation-for="EmailRegister" class="text-danger"></span>
             </div>
-            
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            
             <div class="form-group">
                 <label asp-for="PasswordConfirm" class="control-label"></label>
                 <input asp-for="PasswordConfirm" class="form-control" />
                 <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
             </div>
-            
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsVendedor" name="role" onchange="selectOnlyThis(this.id)" id="vendedor" /> @Html.DisplayNameFor(model => model.IsVendedor)
+                    <input class="form-check-input" asp-for="IsVendedor" onchange="selectOnlyThis('vendedor')" id="vendedor" /> @Html.DisplayNameFor(model => model.IsVendedor)
                 </label>
             </div>
-            
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsGerente" name="role" onchange="selectOnlyThis(this.id)" id="gerente" /> @Html.DisplayNameFor(model => model.IsGerente)
+                    <input class="form-check-input" asp-for="IsGerente" onchange="selectOnlyThis('gerente')" id="gerente" /> @Html.DisplayNameFor(model => model.IsGerente)
                 </label>
             </div>
-            
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsAdmin" name="role" onchange="selectOnlyThis(this.id)" id="admin" /> @Html.DisplayNameFor(model => model.IsAdmin)
+                    <input class="form-check-input" asp-for="IsAdmin" onchange="selectOnlyThis('admin')" id="admin" /> @Html.DisplayNameFor(model => model.IsAdmin)
                 </label>
             </div>
-            
             <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-<script>
 
-    function selectOnlyThis(id) {
-        var checkboxes = document.getElementsByName('role');
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].id !== id) {
-                checkboxes[i].checked = false;
-            }
-        }
-    }
-
-</script>
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
