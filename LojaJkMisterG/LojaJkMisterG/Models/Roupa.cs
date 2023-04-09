@@ -17,7 +17,7 @@ namespace LojaJkMisterG.Models
         [Required(ErrorMessage = "A descrição da roupa deve ser informada!")]
         [Display(Name = "Descrição breve da Roupa")]
         [MinLength(20, ErrorMessage = "Descrição deve ter no mínimo {1} caracteres")]
-        [MaxLength(200, ErrorMessage = "Descrição pode exceder (1) caracteres")]
+        [MaxLength(200, ErrorMessage = "Descrição não pode exceder (1) caracteres")]
         public string DescricaoCurta { get; set; }
 
         [Required(ErrorMessage = "A descrição da roupa deve ser informada!")]

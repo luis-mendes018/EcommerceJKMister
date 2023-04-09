@@ -100,29 +100,29 @@ namespace LojaJkMisterG.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Member");
+                    //await _userManager.AddToRoleAsync(user, "Member");
 
-                    // Cria o token de confirmação de e-mail
-                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //// Cria o token de confirmação de e-mail
+                    //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    // Cria a URL de confirmação de e-mail
-                    var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                    //// Cria a URL de confirmação de e-mail
+                    //var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
 
-                    // Cria o corpo do e-mail
-                    var message = new MailMessage();
-                    message.To.Add(user.Email);
-                    message.Subject = "Confirmação de E-mail";
-                    message.Body = $"Por favor, confirme sua conta clicando neste link: {confirmationLink}";
-                    message.From = new MailAddress("seu-email@gmail.com");
+                    //// Cria o corpo do e-mail
+                    //var message = new MailMessage();
+                    //message.To.Add(user.Email);
+                    //message.Subject = "Confirmação de E-mail";
+                    //message.Body = $"Por favor, confirme sua conta clicando neste link: {confirmationLink}";
+                    //message.From = new MailAddress("seu-email@gmail.com");
 
-                    // Envia o e-mail usando SMTP
-                    var smtpClient = new SmtpClient("smtp.gmail.com")
-                    {
-                        Port = 587,
-                        Credentials = new NetworkCredential("seu-email@gmail.com", "sua-senha"),
-                        EnableSsl = true,
-                    };
-                    smtpClient.Send(message);
+                    //// Envia o e-mail usando SMTP
+                    //var smtpClient = new SmtpClient("smtp.gmail.com")
+                    //{
+                    //    Port = 587,
+                    //    Credentials = new NetworkCredential("seu-email@gmail.com", "sua-senha"),
+                    //    EnableSsl = true,
+                    //};
+                    //smtpClient.Send(message);
 
                     TempData["Mensagem"] = "\nCadastro realizado com sucesso! Foi enviado uma mensagem de confirmação ao email cadastrado. Efetue o login.\n";
                     return RedirectToAction("Login", "Account");
@@ -136,30 +136,30 @@ namespace LojaJkMisterG.Controllers
             return View(registroVM);
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        {
-            if (userId == null || token == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        //[AllowAnonymous]
+        //public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        //{
+        //    if (userId == null || token == null)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var result = await _userManager.ConfirmEmailAsync(user, token);
-            if (result.Succeeded)
-            {
-                return View("ConfirmEmail");
-            }
-            else
-            {
-                return View("Error");
-            }
-        }
+        //    var result = await _userManager.ConfirmEmailAsync(user, token);
+        //    if (result.Succeeded)
+        //    {
+        //        return View("ConfirmEmail");
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
 
 
         [Authorize]
