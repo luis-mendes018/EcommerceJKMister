@@ -84,23 +84,45 @@
 
                         </form>
 
-                        @if (!ViewData.ModelState.IsValid)
-                        {
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @{
-                                        var errorMessage = "Credenciais incorretas!";
-                                        var error = ViewData.ModelState.Values
-                                        .SelectMany(v => v.Errors)
-                                        .FirstOrDefault(e => e.ErrorMessage == errorMessage);
+                        <div>
 
-                                        if (error != null)
-                                        {
+                            <button id="esqueceuSenhaBtn" style="border-radius:5px; height:43px;" class="btn-danger">
+                                Esqueceu sua senha?
+                            </button>
+
+                            <script>
+                                document.getElementById("esqueceuSenhaBtn").addEventListener("click", function () {
+                                    // Obter a URL da action usando o Razor
+                                    var url = '@Url.Action("EsqueceuSenhaView", "EsqueceuSenha")';
+
+                                    // Redirecionar para a URL
+                                    window.location.href = url;
+                                });
+                            </script>
+
+                        </div>
+
+
+                        @{
+
+                            if (!ViewData.ModelState.IsValid)
+                            {
+                                var errorMessage = "Credenciais incorretas!";
+                                var error = ViewData.ModelState.Values
+                                .SelectMany(v => v.Errors)
+                                .FirstOrDefault(e => e.ErrorMessage == errorMessage);
+
+                                if (error != null)
+                                {
+
+                                    <div class="alert alert-danger">
+                                        <ul>
+
                                             <li>@errorMessage</li>
-                                        }
-                                    }
-                                </ul>
-                            </div>
+                                        </ul>
+                                    </div>
+                                }
+                            }
                         }
 
                     </div>

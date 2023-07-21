@@ -1,15 +1,14 @@
-﻿using LojaJkMisterG.Areas.Admin.AdmViewModels;
+﻿using System.Text;
+
+using LojaJkMisterG.Areas.Admin.AdmViewModels;
 using LojaJkMisterG.Context;
 using LojaJkMisterG.Models;
 
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ReflectionIT.Mvc.Paging;
 
-using X.PagedList;
+using ReflectionIT.Mvc.Paging;
 
 namespace LojaJkMisterG.Areas.Admin.Controllers
 {
@@ -41,15 +40,13 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
             }
             //var pagedUsers = await usersQuery.ToPagedListAsync(pageindex, 5);
 
-            var viewModelList = new List<AdminRegistroFuncionarioViewModel>();
+            var viewModelList = new List<AdminRegistroUsuarioEditViewModel>();
             foreach (var user in usersQuery)
             {
-                var viewModel = new AdminRegistroFuncionarioViewModel
+                var viewModel = new AdminRegistroUsuarioEditViewModel
                 {
                     Id = user.Id,
                     EmailRegister = user.Email,
-                    Password = user.PasswordHash,
-                    PasswordConfirm = user.PasswordHash,
                     IsAdmin = await _userManager.IsInRoleAsync(user, RolesTypes.Admin),
                     IsGerente = await _userManager.IsInRoleAsync(user, RolesTypes.Gerente),
                     IsVendedor = await _userManager.IsInRoleAsync(user, RolesTypes.Vendedor)
@@ -84,7 +81,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
             }
 
             var userRoles = await _userManager.GetRolesAsync(user);
-            var viewModel = new AdminRegistroFuncionarioViewModel
+            var viewModel = new AdminRegistroUsuarioEditViewModel
             {
                 Id = user.Id,
                 EmailRegister = user.Email,
@@ -99,18 +96,35 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
         // GET: AdminFuncionariosController/Create
         public IActionResult Create()
         {
-            return View(new AdminRegistroFuncionarioViewModel());
+            return View(new AdminRegistroUsuarioEditViewModel());
         }
 
-        // POST: AdminFuncionariosController/Create
+        // POST: AdminUsuariosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AdminRegistroFuncionarioViewModel model)
+        public async Task<IActionResult> Create(AdminRegistroUsuarioEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.EmailRegister, Email = model.EmailRegister };
-                var result = await _userManager.CreateAsync(user, model.Password);
+
+                var userExists = await _userManager.FindByNameAsync(model.UserName);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError("", "Já existe um usuário com esse nome.");
+                    return View(model);
+                }
+
+                userExists = await _userManager.FindByEmailAsync(model.EmailRegister);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError("", "Já existe um usuário com esse e-mail.");
+                    return View(model);
+                }
+
+
+                var user = new IdentityUser { UserName = model.UserName, Email = model.EmailRegister };
+                var result = await _userManager.CreateAsync(user, model.GeneratedPassword);
+
 
                 if (result.Succeeded)
                 {
@@ -126,6 +140,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                     {
                         await _userManager.AddToRoleAsync(user, RolesTypes.Admin);
                     }
+
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -157,8 +172,8 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
 
             var roles = await _userManager.GetRolesAsync(user);
 
-            var model = new AdminRegistroFuncionarioViewModel
-            {
+            var model = new AdminFuncionarioEditViewModel
+            {   UserName = user.UserName,
                 EmailRegister = user.Email,
                 IsVendedor = roles.Contains(RolesTypes.Vendedor),
                 IsGerente = roles.Contains(RolesTypes.Gerente),
@@ -171,7 +186,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
         // POST: AdminFuncionariosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, AdminRegistroFuncionarioViewModel model)
+        public async Task<IActionResult> Edit(string id, AdminFuncionarioEditViewModel model)
         {
 
 
@@ -184,16 +199,36 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                     return NotFound();
                 }
 
+
+                var userExists = await _userManager.FindByNameAsync(model.UserName);
+                if (userExists != null && userExists.Id != user.Id)
+                {
+                    ModelState.AddModelError("", "Já existe um usuário com esse nome.");
+                    return View(model);
+                }
+
+                userExists = await _userManager.FindByEmailAsync(model.EmailRegister);
+                if (userExists != null && userExists.Id != user.Id)
+                {
+                    ModelState.AddModelError("", "Já existe um usuário com esse e-mail.");
+                    return View(model);
+                }
+
                 user.Email = model.EmailRegister;
-                user.UserName = model.EmailRegister;
+                user.UserName = model.UserName;
+
+                if (!string.IsNullOrEmpty(model.GeneratedPassword))
+                {
+                    var passwordHasher = new PasswordHasher<IdentityUser>();
+                    var passwordHash = passwordHasher.HashPassword(user, model.GeneratedPassword);
+                    user.PasswordHash = passwordHash;
+                }
 
                 var result = await _userManager.UpdateAsync(user);
-
 
                 if (result.Succeeded)
                 {
                     var roles = await _userManager.GetRolesAsync(user);
-
 
                     await _userManager.RemoveFromRolesAsync(user, roles);
 
@@ -209,7 +244,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                     {
                         await _userManager.AddToRoleAsync(user, RolesTypes.Admin);
                     }
-
+                    
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -220,6 +255,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                     }
                 }
             }
+
             return View(model);
 
         }
@@ -239,7 +275,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var viewModel = new AdminRegistroFuncionarioViewModel
+            var viewModel = new AdminRegistroUsuarioEditViewModel
             {
                 Id = user.Id,
                 EmailRegister = user.Email
@@ -273,7 +309,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
 
-                var viewModel = new AdminRegistroFuncionarioViewModel
+                var viewModel = new AdminRegistroUsuarioEditViewModel
                 {
                     Id = user.Id,
                     EmailRegister = user.Email
@@ -281,6 +317,22 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
 
                 return View(viewModel);
             }
+
+
+        }
+
+        public IActionResult GenerateRandomPassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-{}[]|\\:;\"'<>,.?/";
+            var password = new StringBuilder();
+            var random = new Random();
+
+            while (password.Length < 10)
+            {
+                password.Append(chars[random.Next(chars.Length)]);
+            }
+
+            return Ok(password.ToString());
         }
     }
 }

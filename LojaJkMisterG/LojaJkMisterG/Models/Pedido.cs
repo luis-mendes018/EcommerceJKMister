@@ -78,13 +78,13 @@ namespace LojaJkMisterG.Models
 
         [Display(Name = "Data do Pedido")]
         [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
 
         [Display(Name = "Entregue em")]
         [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? PedidoEntregueEm { get; set; }
         
         public List<PedidoDetalhe> Pedidoltens { get; set; }

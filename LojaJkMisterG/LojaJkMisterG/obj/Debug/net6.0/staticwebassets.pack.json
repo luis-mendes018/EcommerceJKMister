@@ -185,8 +185,8 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\icon\\Jk.ico",
+      "PackagePath": "staticwebassets\\icon\\Jk.ico"
     },
     {
       "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\Admin.png",
@@ -245,10 +245,6 @@
       "PackagePath": "staticwebassets\\images\\cart.png"
     },
     {
-      "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\cart.svg",
-      "PackagePath": "staticwebassets\\images\\cart.svg"
-    },
-    {
       "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\cartT.png",
       "PackagePath": "staticwebassets\\images\\cartT.png"
     },
@@ -263,6 +259,10 @@
     {
       "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\file.png",
       "PackagePath": "staticwebassets\\images\\file.png"
+    },
+    {
+      "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\forgot-password.png",
+      "PackagePath": "staticwebassets\\images\\forgot-password.png"
     },
     {
       "Id": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\group.png",

@@ -124,7 +124,7 @@ namespace LojaJkMisterG.Controllers
                     //};
                     //smtpClient.Send(message);
 
-                    TempData["Mensagem"] = "\nCadastro realizado com sucesso! Foi enviado uma mensagem de confirmação ao email cadastrado. Efetue o login.\n";
+                    TempData["Mensagem"] = "\nCadastro realizado com sucesso! Efetue o login.\n";
                     return RedirectToAction("Login", "Account");
                 }
                 else

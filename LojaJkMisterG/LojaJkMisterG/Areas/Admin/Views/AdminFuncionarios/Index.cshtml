@@ -1,4 +1,4 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroFuncionarioViewModel>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroUsuarioEditViewModel>
 
 
 @{
@@ -63,35 +63,7 @@ Total de Funcionários: @Model.TotalRecordCount
 
             </th>
 
-            @*<th>
-
-                @Html.DisplayNameFor(model => model.Password)
-
-            </th>
-
-            <th>
-
-                @Html.DisplayNameFor(model => model.PasswordConfirm)
-
-            </th>*@
-
-            <th>
-                
-                @Html.DisplayNameFor(model => model.IsVendedor)
-
-            </th>
-            
-            <th>
-
-                @Html.DisplayNameFor(model => model.IsGerente)
-
-            </th>
-
-            <th>
-
-                @Html.DisplayNameFor(model => model.IsAdmin)
-
-            </th>
+           
 
         </tr>
 
@@ -110,35 +82,6 @@ Total de Funcionários: @Model.TotalRecordCount
 
                 </td>
 
-                @*<td>
-
-                    @Html.DisplayFor(modelItem => item.Password)
-
-                </td>
-
-                <td>
-
-                    @Html.DisplayFor(modelItem => item.PasswordConfirm)
-
-                </td>*@
-
-                <td>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.IsVendedor)
-
-                </td>
-
-                <td>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.IsGerente)
-
-                </td>
-
-                <td>
-                    <br>
-                    @Html.DisplayFor(modelItem => item.IsAdmin)
-
-                </td>
 
                 <td>
 

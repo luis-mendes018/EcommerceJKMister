@@ -25,49 +25,7 @@ namespace LojaJkMisterG.Areas.Admin.Controllers
             return View();
         }
 
-        //Área de administração
-        [Authorize]
-        public IActionResult AdminAlterarSenhaView()
-        {
-            return View(new AdminAlterarSenhaViewModel());
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> AdminAlterarSenhaView(AdminAlterarSenhaViewModel admAlterarSenha)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(admAlterarSenha);
-            }
-
-            var user = await _admManager.GetUserAsync(User);
-
-            var result = await _admManager.CheckPasswordAsync(user, admAlterarSenha.AdminPasswordNow);
-
-            if (!result)
-            {
-                ModelState.AddModelError("PasswordNow", "A senha atual fornecida está incorreta.");
-                return View(admAlterarSenha);
-            }
-
-            var newPassword = _admManager.PasswordHasher.HashPassword(user, admAlterarSenha.AdminPasswordNew);
-            user.PasswordHash = newPassword;
-            var updateResult = await _admManager.UpdateAsync(user);
-            if (!updateResult.Succeeded)
-            {
-                ModelState.AddModelError(string.Empty, "Ocorreu um erro ao atualizar a senha do usuário.");
-                return View(admAlterarSenha);
-            }
-            else
-            {
-                TempData["SuccessMessage"] = "\nSenha alterada com suscesso!\n";
-
-            }
-
-            return View(admAlterarSenha);
-
-        }
+       
     }
 
 

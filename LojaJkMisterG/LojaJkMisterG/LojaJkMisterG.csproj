@@ -12,16 +12,18 @@
 
   <ItemGroup>
     <None Remove="Areas\Admin\Views\AdminFuncionarios\ae2byet3.xhh~" />
+    <None Remove="Areas\Admin\Views\AdminFuncionarios\Create.cshtml~RF18fe673.TMP" />
+    <None Remove="Areas\Admin\Views\Shared\_Layout.cshtml~RF1e2a1e4.TMP" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.2.3" />
     <PackageReference Include="FastReport.OpenSource" Version="2023.1.13" />
-    <PackageReference Include="FastReport.OpenSource.Data.MsSql" Version="2021.4.0" />
     <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2023.1.13" />
     <PackageReference Include="FastReport.OpenSource.Web" Version="2023.1.13" />
     <PackageReference Include="MailKit" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -41,7 +43,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\produtos\" />
-    <Folder Include="wwwroot\reports\" />
   </ItemGroup>
 
 </Project>

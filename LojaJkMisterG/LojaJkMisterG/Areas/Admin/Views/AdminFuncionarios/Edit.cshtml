@@ -1,10 +1,10 @@
-﻿@model LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroFuncionarioViewModel
+﻿@model LojaJkMisterG.Areas.Admin.AdmViewModels.AdminFuncionarioEditViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar fncionário";
 }
 
-<h1>Edit</h1>
+
 
 
 <script>
@@ -19,48 +19,96 @@
     }
 
 </script>
-
-
-
-<h4>AdminRegistroFuncionarioViewModel</h4>
+<br />
+<br />
+<h4>Editar funcionário</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <br />
             <div class="form-group">
                 <label asp-for="EmailRegister" class="control-label"></label>
                 <input asp-for="EmailRegister" class="form-control" />
                 <span asp-validation-for="EmailRegister" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PasswordConfirm" class="control-label"></label>
-                <input asp-for="PasswordConfirm" class="form-control" />
-                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
-            </div>
+            <br />
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsVendedor"  onchange="selectOnlyThis('vendedor')" id="vendedor" /> @Html.DisplayNameFor(model => model.IsVendedor)
                 </label>
             </div>
+            <br />
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsGerente"  onchange="selectOnlyThis('gerente')" id="gerente" /> @Html.DisplayNameFor(model => model.IsGerente)
                 </label>
             </div>
+            <br />
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsAdmin"  onchange="selectOnlyThis('admin')" id="admin" /> @Html.DisplayNameFor(model => model.IsAdmin)
                 </label>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="GeneratedPassword" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="GeneratedPassword" class="form-control" readonly />
+                    <div class="input-group-append">
+                        <button id="btnGeneratePasswordEdit" type="button" class="btn btn-secondary">Resetar senha</button>
+                    </div>
+                </div>
+                <span asp-validation-for="GeneratedPassword" class="text-danger"></span>
+            </div>
+            <br />
+            @section Scripts {
+                <script>
+                    $('#btnGeneratePasswordEdit').click(function () {
+                        $.ajax({
+                            url: '@Url.Action("GenerateRandomPassword", "AdminFuncionarios")',
+                            type: 'GET',
+                            success: function (data) {
+                                $('#GeneratedPassword').val(data);
+                            }
+                        });
+                    });
+                </script>
+
+                <script>
+                    const checkboxes = document.querySelectorAll('.form-check-input');
+
+                    function selectOnlyThis(id) {
+                        checkboxes.forEach((checkbox) => {
+                            if (checkbox.id === id) {
+                                if (checkbox.checked) {
+                                    checkboxes.forEach((otherCheckbox) => {
+                                        if (otherCheckbox !== checkbox) {
+                                            otherCheckbox.checked = false;
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+
+                </script>
+            }
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -69,6 +117,6 @@
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a style="color:white" asp-action="Index">Voltar</a>
 </div>
 

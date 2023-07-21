@@ -1,7 +1,7 @@
 ﻿@model LojaJkMisterG.Models.Pedido
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir pedido";
 }
 
 <style>
@@ -14,11 +14,13 @@
     }
 </style>
 
-<h1>Deletar do histórico de pedidos</h1>
+<br />
+<br />
+<h3>Excluir do histórico de pedidos</h3>
 
-<h4><b>Atenção!! Ao deletar o pedido seus respectivos itens serão excluidos</b></h4>
+<h4><b>Atenção!! Ao excluir o pedido seus respectivos itens serão excluidos</b></h4>
 <div>
-    <h4>Pedido</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -109,7 +111,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="PedidoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
         <a asp-action="Index">Voltar</a>
     </form>
 </div>

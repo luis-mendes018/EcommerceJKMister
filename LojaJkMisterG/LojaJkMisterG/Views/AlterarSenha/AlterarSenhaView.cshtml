@@ -34,13 +34,15 @@
     </style>
 </head>
 <body>
+    <br />
     <div class="mensagem">
-        @if (TempData["Mensagem"] != null)
+        @if (TempData["SuccessMessage"] != null)
         {
             <div class="alert alert-success">
-                @TempData["Mensagem"]
+                @TempData["SuccessMessage"]
             </div>
         }
+
     </div>
     <table class="table">
         <tr>

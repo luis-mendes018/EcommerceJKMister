@@ -11,7 +11,7 @@ namespace LojaJkMisterG.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            //Database.EnsureCreated();        
         }
 
         public DbSet<Categoria> Categorias { get; set; }
@@ -19,7 +19,7 @@ namespace LojaJkMisterG.Context
         public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoDetalhe> PedidosDetalhe { get; set; }
-        public DbSet<LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroFuncionarioViewModel> AdminRegistroFuncionarioViewModel { get; set; }
+        public DbSet<LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroUsuarioEditViewModel> AdminRegistroFuncionarioViewModel { get; set; }
 
 
 

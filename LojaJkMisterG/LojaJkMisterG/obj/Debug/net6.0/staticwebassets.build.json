@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y9UQqe9RI+B6vIYTEQz+B1Jf57pxX+GAHn/adS9EgYA=",
+  "Hash": "Nr2Gl15YI0IndERIRAqWx50N6rv0HTI0ur0+qB0Ip6U=",
   "Source": "LojaJkMisterG",
   "BasePath": "_content/LojaJkMisterG",
   "Mode": "Default",
@@ -816,12 +816,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\favicon.ico",
+      "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\icon\\Jk.ico",
       "SourceId": "LojaJkMisterG",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\",
       "BasePath": "_content/LojaJkMisterG",
-      "RelativePath": "favicon.ico",
+      "RelativePath": "icon/Jk.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -830,7 +830,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot\\icon\\Jk.ico"
     },
     {
       "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\Admin.png",
@@ -969,23 +969,6 @@
       "OriginalItemSpec": "wwwroot\\images\\cart.png"
     },
     {
-      "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\cart.svg",
-      "SourceId": "LojaJkMisterG",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\",
-      "BasePath": "_content/LojaJkMisterG",
-      "RelativePath": "images/cart.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\cart.svg"
-    },
-    {
       "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\cartT.png",
       "SourceId": "LojaJkMisterG",
       "SourceType": "Discovered",
@@ -1052,6 +1035,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\file.png"
+    },
+    {
+      "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\forgot-password.png",
+      "SourceId": "LojaJkMisterG",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\",
+      "BasePath": "_content/LojaJkMisterG",
+      "RelativePath": "images/forgot-password.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\forgot-password.png"
     },
     {
       "Identity": "D:\\JKMisterGSite\\LojaJkMisterG\\LojaJkMisterG\\wwwroot\\images\\group.png",

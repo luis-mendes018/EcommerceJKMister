@@ -40,7 +40,7 @@ namespace LojaJkMisterG.Models
 
         public void AdicionarAoCarrinho(Roupa roupa)
         {
-            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.FirstOrDefault(
 
            s => s.Roupa.RoupaId == roupa.RoupaId &&
            s.CarrinhoCompraId == CarrinhoCompraId);
@@ -65,9 +65,11 @@ namespace LojaJkMisterG.Models
             _context.SaveChanges();
         }
 
+        //SingleOrDefault --> Método alternativo para adicionar ou remover itens
+        // do carrinho
         public int RemoverDoCarrinho(Roupa roupa)
         {
-            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.FirstOrDefault(
 
            s => s.Roupa.RoupaId == roupa.RoupaId &&
            s.CarrinhoCompraId == CarrinhoCompraId);

@@ -3,15 +3,21 @@
 using Microsoft.AspNetCore.Identity;
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace LojaJkMisterG.Areas.Admin.AdmViewModels
 {
   
-    public class AdminRegistroFuncionarioViewModel
+    public class AdminRegistroUsuarioEditViewModel
     {
         [Key]
         public string Id { get; set; }
+
+        [Display(Name = "Usuário")]
+        [Required(ErrorMessage = "Informe o nome de usuário")]
+        [LoginValidation(ErrorMessage = "Formato de login inválido!")]
+        [StringLength(50, ErrorMessage = "Limite de caracteres excedido!")]
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Informe o e-mail!")]
         [DataType(DataType.EmailAddress)]
@@ -20,19 +26,6 @@ namespace LojaJkMisterG.Areas.Admin.AdmViewModels
         [Display(Name = "E-mail")]
         public string EmailRegister { get; set; }
 
-
-        [Required(ErrorMessage = "Informe a senha!")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
-        [SenhaValidation(ErrorMessage = "Senha requer entre 6 e 20 caracteres!")]
-        public string Password { get; set; }
-
-        [Required(ErrorMessage = "Confirme sua senha")]
-        [DataType(DataType.Password)]
-        [SenhaValidation(ErrorMessage = "Senha requer entre 6 e 20 caracteres!")]
-        [Compare(nameof(Password), ErrorMessage = "A senha e a confirmação não são iguais")]
-        [Display(Name = "Confirmar senha")]
-        public string PasswordConfirm { get; set; }
 
         [Display(Name = "Vendedor")]
         public bool IsVendedor { get; set; }
@@ -43,6 +36,12 @@ namespace LojaJkMisterG.Areas.Admin.AdmViewModels
 
         [Display(Name = "Administrador")]
         public bool IsAdmin { get; set; }
+
+        [Required(ErrorMessage = "Esse campo é obrigatório")]
+        [SenhaValidation(ErrorMessage = "Formato de senha inválido!")]
+        [Display(Name = "Senha gerada aleatoriamente")]
+        public string GeneratedPassword { get; set; }
+
 
     }
 }

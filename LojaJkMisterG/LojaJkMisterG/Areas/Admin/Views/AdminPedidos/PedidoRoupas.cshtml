@@ -12,13 +12,18 @@
         color: white;
     }
 </style>
-<h1>Roupas do Pedido</h1>
-<hr />
-<h4>Pedido : @Html.DisplayFor(model => @Model.Pedido.PedidoId)</h4>
-<h4>Cliente: @Html.DisplayFor(model => @Model.Pedido.Nome)</h4>
-<h4>Data: @Html.DisplayFor(model => @Model.Pedido.PedidoEnviado)</h4>
-<h4>Entrega: @Html.DisplayFor(model => @Model.Pedido.PedidoEntregueEm)</h4>
 
+<br />
+<br />
+
+<h3>Roupas do Pedido</h3>
+<hr />
+<h5>Pedido : @Html.DisplayFor(model => @Model.Pedido.PedidoId)</h5>
+<h5>Cliente: @Html.DisplayFor(model => @Model.Pedido.Nome)</h5>
+<h5>Data: @Html.DisplayFor(model => @Model.Pedido.PedidoEnviado)</h5>
+<h5>Entrega: @Html.DisplayFor(model => @Model.Pedido.PedidoEntregueEm)</h5>
+
+<br />
 <br />
 <table class="table">
     @foreach (var item in @Model.Pedido.Pedidoltens)

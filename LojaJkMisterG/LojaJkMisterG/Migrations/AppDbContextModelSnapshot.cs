@@ -17,10 +17,37 @@ namespace LojaJkMisterG.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LojaJkMisterG.Areas.Admin.AdmViewModels.AdminRegistroFuncionarioViewModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("EmailRegister")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GeneratedPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsGerente")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsVendedor")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AdminRegistroFuncionarioViewModel");
+                });
 
             modelBuilder.Entity("LojaJkMisterG.Models.CarrinhoCompraItem", b =>
                 {
@@ -177,37 +204,6 @@ namespace LojaJkMisterG.Migrations
                     b.HasIndex("RoupaId");
 
                     b.ToTable("PedidosDetalhe");
-                });
-
-            modelBuilder.Entity("LojaJkMisterG.Models.PermissoesFuncionario", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("AcessoCategorias")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AcessoGerenciamentoFuncionarios")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AcessoGraficosVendas")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AcessoPedidos")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AcessoProdutos")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AcessoRelatorioVendas")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("isAdmin")
-                        .HasColumnType("bit");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("PermissoesFuncionarios");
                 });
 
             modelBuilder.Entity("LojaJkMisterG.Models.Roupa", b =>
@@ -484,17 +480,6 @@ namespace LojaJkMisterG.Migrations
                     b.Navigation("Pedido");
 
                     b.Navigation("Roupa");
-                });
-
-            modelBuilder.Entity("LojaJkMisterG.Models.PermissoesFuncionario", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("LojaJkMisterG.Models.Roupa", b =>

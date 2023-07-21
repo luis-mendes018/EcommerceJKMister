@@ -6,7 +6,7 @@ namespace LojaJkMisterG.ViewModels
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Informe o nome de usuário")]
-        [LoginValidation(ErrorMessage = "Formato de login inválido!")]
+        //[LoginValidation(ErrorMessage = "Formato de login inválido!")]
         [Display(Name = "Usuário")]
         [StringLength(50, ErrorMessage = "Limite de caracteres excedido!")]
         public string UserName { get; set; }
